@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  APPLICANT
+  MODERATOR
+  ADMIN
+}
+
+enum ApplicationStatus {
+  PENDING
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  username     String   @unique
+  passwordHash String
+  role         Role     @default(APPLICANT)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  applications     Application[]
+  applicationNotes ApplicationNote[]
+
+  @@map("users")
+}
+
+model Application {
+  id        String            @id @default(cuid())
+  userId    String
+  status    ApplicationStatus @default(PENDING)
+  answers   Json              // Stores { questionId: answer } pairs
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  user  User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  notes ApplicationNote[]
+
+  @@map("applications")
+}
+
+model ApplicationNote {
+  id            String   @id @default(cuid())
+  applicationId String
+  authorId      String
+  content       String
+  createdAt     DateTime @default(now())
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  author      User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("application_notes")
+}
+
+model Build {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  author      String
+  imageUrls   Json     // Array of image URL strings
+  category    String
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("builds")
+}
