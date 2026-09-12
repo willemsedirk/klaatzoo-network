@@ -60,7 +60,7 @@ export default function ResourcesPage() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children scroll-reveal">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 stagger-children scroll-reveal">
               {category.items.map((item) => {
                 const isExternal = "external" in item && item.external;
                 const cardContent = (
@@ -128,8 +128,8 @@ export default function ResourcesPage() {
             <div className="space-y-4">
               {[
                 { step: "1", title: "Apply", desc: "Fill out our application form — it takes just a few minutes.", color: "var(--color-mc-green)" },
-                { step: "2", title: "Wait for Review", desc: "Our staff will review your application within 24-48 hours.", color: "var(--color-mc-blue)" },
-                { step: "3", title: "Get Accepted", desc: "You'll receive a notification on Discord when you're accepted.", color: "var(--color-mc-yellow)" },
+                { step: "2", title: "Wait for Review", desc: "The server owner will review your application.", color: "var(--color-mc-blue)" },
+                { step: "3", title: "Get Accepted", desc: "You'll receive a notification from the owner when you're accepted.", color: "var(--color-mc-yellow)" },
                 { step: "4", title: "Connect & Play", desc: `Launch Minecraft ${siteConfig.server.version}, add our server IP, and join the fun!`, color: "var(--color-mc-purple)" },
               ].map((item) => (
                 <div key={item.step} className="flex items-start gap-4">

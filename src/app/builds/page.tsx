@@ -38,7 +38,7 @@ export default async function BuildsPage() {
     description: string;
     author: string;
     imageUrls: unknown;
-    category: string;
+    
     featured: boolean;
   }> = [];
 
@@ -50,7 +50,7 @@ export default async function BuildsPage() {
     // DB not available yet — show empty state
   }
 
-  const categories = ["All", ...Array.from(new Set(builds.map((b) => b.category)))];
+  
 
   return (
     <PageShell>
@@ -60,23 +60,11 @@ export default async function BuildsPage() {
           Community Builds
         </h1>
         <p className="text-[var(--color-text-secondary)] max-w-2xl text-lg">
-          Explore incredible creations from our talented community. From cozy survival bases to jaw-dropping megastructures.
+          Explore incredible creations from our talented community.
         </p>
       </section>
 
-      {/* Category filters */}
-      <section className="pb-8 scroll-reveal">
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <span
-              key={cat}
-              className="px-4 py-2 text-sm font-medium rounded-[var(--radius-full)] cursor-pointer transition-all duration-200 bg-[var(--color-bg-card)] border border-[var(--color-border-light)] text-[var(--color-text-secondary)] hover:border-[var(--color-mc-green)] hover:text-[var(--color-mc-green)]"
-            >
-              {cat}
-            </span>
-          ))}
-        </div>
-      </section>
+
 
       {/* Builds grid */}
       {builds.length > 0 ? (
@@ -86,7 +74,7 @@ export default async function BuildsPage() {
             return (
               <Card
                 key={build.id}
-                accent={categoryAccents[build.category] || "green"}
+                
                 hover
                 padding="sm"
                 className="overflow-hidden"
@@ -116,16 +104,7 @@ export default async function BuildsPage() {
                     <h3 className="font-display font-semibold text-lg text-[var(--color-text-primary)] line-clamp-1">
                       {build.title}
                     </h3>
-                    <Badge
-                      variant="default"
-                      size="sm"
-                    >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full mr-1.5"
-                        style={{ backgroundColor: categoryColors[build.category] || "var(--color-mc-green)" }}
-                      />
-                      {build.category}
-                    </Badge>
+                    
                   </div>
                   <p className="text-sm text-[var(--color-text-secondary)] mb-3 line-clamp-2">
                     {build.description}

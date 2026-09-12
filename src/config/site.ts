@@ -4,12 +4,14 @@ export const siteConfig = {
   tagline: "Where Builders Become Legends",
   server: {
     ip: "play.klaatzoo.net",
-    version: "26.1.2",
+    version: "26.3",
     platform: "Java Edition",
-    maxPlayers: 50,
+    maxPlayers: 20,
+    serverLocation: "North America",
+    restartFrequency: "Daily",
   },
   links: {
-    discord: "https://discord.gg/klaatzoo",
+    discord: "https://discord.gg/fk8kzxHNsH",
     wiki: "https://wiki.klaatzoo.net",
     dynmap: "https://map.klaatzoo.net",
   },
@@ -35,7 +37,7 @@ export const siteConfig = {
       {
         title: "Community",
         links: [
-          { label: "Discord", href: "https://discord.gg/klaatzoo" },
+          { label: "Discord", href: "https://discord.gg/fk8kzxHNsH" },
           { label: "Apply", href: "/apply" },
           { label: "Rules", href: "/about#rules" },
         ],
@@ -43,8 +45,7 @@ export const siteConfig = {
       {
         title: "Tools",
         links: [
-          { label: "Live Map", href: "https://map.klaatzoo.net" },
-          { label: "Wiki", href: "https://wiki.klaatzoo.net" },
+          //{ label: "Wiki", href: "https://wiki.klaatzoo.net" },
           { label: "Status", href: "/resources#status" },
           { label: "Staff Login", href: "/login" },
         ],
@@ -113,23 +114,18 @@ export const siteConfig = {
           href: "/resources#how-to-join",
           icon: "rocket",
         },
-        {
-          title: "Starter Guide",
-          description: "Everything you need to know for your first day on the server.",
-          href: "/resources#starter-guide",
-          icon: "book",
-        },
+        
       ],
     },
     {
       category: "Modifications",
       items: [
-        {
-          title: "Approved Mods List",
-          description: "Client-side mods you're allowed to use on Klaatzoo.",
-          href: "/resources#approved-mods",
-          icon: "puzzle",
-        },
+        //{
+        //  title: "Approved Mods List",
+        //  description: "Client-side mods you're allowed to use on Klaatzoo.",
+        //  href: "/resources#approved-mods",
+        //  icon: "puzzle",
+        //},
         {
           title: "Resource Packs",
           description: "Our recommended and custom resource packs for the best experience.",
@@ -148,20 +144,14 @@ export const siteConfig = {
           icon: "chat",
           external: true,
         },
-        {
-          title: "Wiki",
-          description: "Community-maintained wiki with guides, lore, and build documentation.",
-          href: "https://wiki.klaatzoo.net",
-          icon: "globe",
-          external: true,
-        },
-        {
-          title: "Live Map",
-          description: "Real-time dynamic map of the server world.",
-          href: "https://map.klaatzoo.net",
-          icon: "map",
-          external: true,
-        },
+        
+        //{
+        //  title: "Live Map",
+        //  description: "Real-time dynamic map of the server world.",
+        //  href: "https://map.klaatzoo.net",
+        //  icon: "map",
+        //  external: true,
+        //},
       ],
     },
   ],

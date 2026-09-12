@@ -134,6 +134,11 @@ export function Navbar() {
                   variant="outline"
                   size="sm"
                   onClick={() => signOut({ callbackUrl: "/" })}
+                  className={cn(
+                    isTransparent
+                      ? "!text-white !border-white/50 hover:!border-white hover:!bg-white/10 hover:!text-white"
+                      : "!text-[var(--color-text-primary)] !border-[var(--color-border)] hover:!border-[var(--color-text-primary)] hover:!bg-[var(--color-bg-secondary)]/50 hover:!text-[var(--color-text-primary)]"
+                  )}
                 >
                   Sign Out
                 </Button>
@@ -201,7 +206,7 @@ export function Navbar() {
                 </Link>
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
-                  className="block w-full text-left px-4 py-2.5 text-sm font-medium text-[var(--color-mc-red)] hover:bg-[var(--color-danger-light)] rounded-[var(--radius-md)]"
+                  className="block w-full text-left px-4 py-2.5 text-sm font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] rounded-[var(--radius-md)]"
                 >
                   Sign Out
                 </button>

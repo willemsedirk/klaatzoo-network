@@ -49,12 +49,14 @@ export default function AboutPage() {
         <h2 className="font-display font-bold text-2xl text-[var(--color-text-primary)] mb-6">
           🖥️ Server Information
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children scroll-reveal">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-4 stagger-children scroll-reveal">
           {[
             { label: "Server IP", value: siteConfig.server.ip, color: "var(--color-mc-green)", accent: "green" as const, mono: true },
             { label: "Version", value: siteConfig.server.version, color: "var(--color-mc-blue)", accent: "blue" as const, mono: false },
             { label: "Platform", value: siteConfig.server.platform, color: "var(--color-mc-yellow)", accent: "yellow" as const, mono: false },
             { label: "Max Players", value: String(siteConfig.server.maxPlayers), color: "var(--color-mc-purple)", accent: "purple" as const, mono: false },
+            { label: "Server Location", value: siteConfig.server.serverLocation, color: "var(--color-mc-green)", accent: "green" as const, mono: false },
+            { label: "Restart Frequency", value: siteConfig.server.restartFrequency, color: "var(--color-mc-red)", accent: "red" as const, mono: false },
           ].map((info) => (
             <Card key={info.label} accent={info.accent} padding="md">
               <p className="text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-1">
@@ -111,47 +113,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Staff Team ──────────────────────────────────── */}
-      <section className="pb-20 scroll-reveal">
-        <h2 className="font-display font-bold text-2xl text-[var(--color-text-primary)] mb-6">
-          👥 Staff Team
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children scroll-reveal">
-          {siteConfig.staff.map((member, i) => {
-            const accents: Array<"green" | "blue" | "red" | "purple" | "yellow"> = ["green", "blue", "red", "purple", "yellow"];
-            const colors = [
-              "var(--color-mc-green)",
-              "var(--color-mc-blue)",
-              "var(--color-mc-red)",
-              "var(--color-mc-purple)",
-            ];
-
-            return (
-              <Card key={member.name} accent={accents[i % accents.length]} hover padding="md" className="text-center">
-                {/* Avatar placeholder */}
-                <div
-                  className="w-20 h-20 rounded-[var(--radius-xl)] mx-auto mb-4 flex items-center justify-center text-white font-display font-bold text-2xl"
-                  style={{ backgroundColor: colors[i % colors.length] }}
-                >
-                  {member.name.charAt(0)}
-                </div>
-                <h3 className="font-display font-semibold text-[var(--color-text-primary)]">
-                  {member.name}
-                </h3>
-                <p
-                  className="text-xs font-medium mb-3"
-                  style={{ color: colors[i % colors.length] }}
-                >
-                  {member.role}
-                </p>
-                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  {member.bio}
-                </p>
-              </Card>
-            );
-          })}
-        </div>
-      </section>
     </PageShell>
   );
 }

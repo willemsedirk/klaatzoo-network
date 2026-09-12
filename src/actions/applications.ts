@@ -63,6 +63,16 @@ export async function submitApplication(formData: FormData) {
     }
   }
 
+  // Update user's email if provided in the application
+  let userEmail = session.user.email || "Unknown";
+  if (typeof answers.email_address === "string" && answers.email_address.trim() !== "") {
+    userEmail = answers.email_address.trim();
+    await db.user.update({
+      where: { id: session.user.id },
+      data: { email: userEmail },
+    });
+  }
+
   // Save to database
   const application = await db.application.create({
     data: {
@@ -75,7 +85,7 @@ export async function submitApplication(formData: FormData) {
   // Send Discord notification
   await notifyNewApplication({
     username: session.user.name || "Unknown",
-    email: session.user.email || "Unknown",
+    email: userEmail,
     applicationId: application.id,
     answers,
     siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",

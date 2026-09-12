@@ -139,10 +139,17 @@ export default function ApplyPage() {
 
   useEffect(() => {
     if (status === "authenticated" && session?.user?.name) {
-      setCheckedUsername(session.user.name);
-      setStep("FORM");
+      // Check if user already has an application before showing the form
+      checkApplicationExists(session.user.name).then((result) => {
+        if (result.exists) {
+          router.push("/dashboard");
+        } else {
+          setCheckedUsername(session.user.name!);
+          setStep("FORM");
+        }
+      });
     }
-  }, [status, session]);
+  }, [status, session, router]);
 
 
   async function handleCheckUsername(formData: FormData) {
@@ -213,71 +220,73 @@ export default function ApplyPage() {
 
   return (
     <PageShell>
-      <section className="pt-12 pb-8">
-        <h1 className="font-display font-bold text-4xl sm:text-5xl text-[var(--color-text-primary)] mb-4">
-          Apply to Join
-        </h1>
-        <p className="text-[var(--color-text-secondary)] max-w-2xl text-lg">
-          {step === "CHECK_USERNAME"
-            ? "First, let's see if you've already applied."
-            : "Tell us about yourself and your Minecraft experience. We review every application personally."}
-        </p>
-      </section>
+      <div className="max-w-2xl mx-auto">
+        <section className="pt-12 pb-8 text-center">
+          <h1 className="font-display font-bold text-4xl sm:text-5xl text-[var(--color-text-primary)] mb-4">
+            Apply to Join
+          </h1>
+          <p className="text-[var(--color-text-secondary)] text-lg">
+            {step === "CHECK_USERNAME"
+              ? "First, let's see if you've already applied."
+              : "Tell us about yourself and your Minecraft experience. We review every application personally."}
+          </p>
+        </section>
 
-      <section className="pb-20 max-w-2xl" style={{ opacity: 1, visibility: 'visible' }}>
-        <Card padding="lg" accent="green">
-          {step === "CHECK_USERNAME" ? (
-            <form action={handleCheckUsername} className="apply-form space-y-8" style={{ opacity: 1 }}>
-              {error && (
-                <div className="p-3 bg-[var(--color-danger-light)] border border-[var(--color-mc-red)]/20 rounded-[var(--radius-md)] text-sm text-[var(--color-mc-red)]">
-                  {error}
-                </div>
-              )}
-              
-              <div>
-                <QuestionField 
-                  question={applicationQuestions.find(q => q.id === "minecraft_username")!} 
-                />
-              </div>
-
-              <div className="pt-4 border-t border-[var(--color-border)]">
-                <Button type="submit" size="lg" className="w-full" loading={loading}>
-                  Continue
-                </Button>
-              </div>
-            </form>
-          ) : (
-            <form action={handleSubmit} className="apply-form space-y-8" style={{ opacity: 1 }}>
-              {error && (
-                <div className="p-3 bg-[var(--color-danger-light)] border border-[var(--color-mc-red)]/20 rounded-[var(--radius-md)] text-sm text-[var(--color-mc-red)]">
-                  {error}
-                </div>
-              )}
-
-              {applicationQuestions.map((question, index) => (
-                <div key={question.id} style={{ opacity: 1 }}>
+        <section className="pb-20" style={{ opacity: 1, visibility: 'visible' }}>
+          <Card padding="lg" accent="green">
+            {step === "CHECK_USERNAME" ? (
+              <form action={handleCheckUsername} className="apply-form space-y-8" style={{ opacity: 1 }}>
+                {error && (
+                  <div className="p-3 bg-[var(--color-danger-light)] border border-[var(--color-mc-red)]/20 rounded-[var(--radius-md)] text-sm text-[var(--color-mc-red)]">
+                    {error}
+                  </div>
+                )}
+                
+                <div>
                   <QuestionField 
-                    question={question} 
-                    defaultValue={question.id === "minecraft_username" ? checkedUsername : undefined}
+                    question={applicationQuestions.find(q => q.id === "minecraft_username")!} 
                   />
                 </div>
-              ))}
 
-              <div className="pt-4 border-t border-[var(--color-border)] flex gap-3">
-                <Button type="button" variant="outline" size="lg" onClick={() => setStep("CHECK_USERNAME")} disabled={loading}>
-                  Back
-                </Button>
-                <Button type="submit" size="lg" className="flex-1" loading={loading}>
-                  Submit Application
-                </Button>
-              </div>
-              <p className="text-xs text-[var(--color-text-muted)] text-center mt-3">
-                By submitting, you agree to follow our server rules and community guidelines.
-              </p>
-            </form>
-          )}
-        </Card>
-      </section>
+                <div className="pt-4 border-t border-[var(--color-border)]">
+                  <Button type="submit" size="lg" className="w-full" loading={loading}>
+                    Continue
+                  </Button>
+                </div>
+              </form>
+            ) : (
+              <form action={handleSubmit} className="apply-form space-y-8" style={{ opacity: 1 }}>
+                {error && (
+                  <div className="p-3 bg-[var(--color-danger-light)] border border-[var(--color-mc-red)]/20 rounded-[var(--radius-md)] text-sm text-[var(--color-mc-red)]">
+                    {error}
+                  </div>
+                )}
+
+                {applicationQuestions.map((question, index) => (
+                  <div key={question.id} style={{ opacity: 1 }}>
+                    <QuestionField 
+                      question={question} 
+                      defaultValue={question.id === "minecraft_username" ? checkedUsername : undefined}
+                    />
+                  </div>
+                ))}
+
+                <div className="pt-4 border-t border-[var(--color-border)] flex gap-3">
+                  <Button type="button" variant="outline" size="lg" onClick={() => setStep("CHECK_USERNAME")} disabled={loading}>
+                    Back
+                  </Button>
+                  <Button type="submit" size="lg" className="flex-1" loading={loading}>
+                    Submit Application
+                  </Button>
+                </div>
+                <p className="text-xs text-[var(--color-text-muted)] text-center mt-3">
+                  By submitting, you agree to follow our server rules and community guidelines.
+                </p>
+              </form>
+            )}
+          </Card>
+        </section>
+      </div>
     </PageShell>
   );
 }
