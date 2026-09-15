@@ -1,7 +1,6 @@
 export const siteConfig = {
   name: "Klaatzoo Network",
-  description: "A premium Minecraft SMP experience. Build, explore, and thrive in our carefully curated survival multiplayer world.",
-  tagline: "Where Builders Become Legends",
+  description: "We are a community driven by the burning passion we all share to create awesome things using survival Minecraft as our canvas.",
   server: {
     ip: "play.klaatzoo.net",
     version: "26.3",

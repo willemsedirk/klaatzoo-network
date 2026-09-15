@@ -27,17 +27,17 @@ export default function AboutPage() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[var(--color-mc-green)]/5 to-transparent rounded-full translate-x-20 -translate-y-20" />
           <div className="relative">
             <h2 className="font-display font-bold text-2xl text-[var(--color-text-primary)] mb-4">
-              📖 Our Story
+              What is the Klaatzoo Network?
             </h2>
             <div className="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
               <p>
-                Klaatzoo Network was born in the summer of 2022, when a small group of friends decided they wanted something more than just another vanilla SMP. They wanted a server that felt like <strong className="text-[var(--color-text-primary)]">home</strong> — a place where creativity thrives, friendships form naturally, and every player&apos;s contribution matters.
+                Our story began in late December of 2024, as a small group of freaks just wanting to satiate our hunger for the 2 week Minecraft phase. Since then, our little group has grown into a flourishing community full of creativity and teamwork from far and wide.
               </p>
+              <h3 className="font-display font-bold text-2xl text-[var(--color-text-primary)] mb-4">
+                Which brings us to the present, 2026
+              </h3>
               <p>
-                What started as a 10-player whitelist quickly grew into a thriving community of builders, redstoners, explorers, and storytellers. We&apos;ve survived world resets (only one — we learned our lesson), server migrations, and countless creeper explosions, but through it all, one thing has stayed constant: our commitment to building a community where everyone belongs.
-              </p>
-              <p>
-                Today, Klaatzoo is home to <strong className="text-[var(--color-text-primary)]">50+ active players</strong> across multiple time zones, with a world that&apos;s been continuously running for over 3 years. Every mountain, village, and redstone contraption tells a story — and we&apos;d love for you to add your chapter.
+                Since the very beginning we’ve strived to keep to the traditional Minecraft roots, preferring to stay away from pay to win ranks, land claiming, teleporting, and all that nonsense. Our server is strictly vanilla plus only, only minor datapacks such as QoL features from Vanilla Tweaks are used on the network.
               </p>
             </div>
           </div>

@@ -46,7 +46,7 @@ export default function HomePage() {
   return (
     <PageShell fullWidth className="!p-0">
       {/* ── Hero Section ────────────────────────────────── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[var(--color-bg-dark)]">
+      <section className="relative min-h-[110vh] min-h-[110dvh] -mb-px flex items-center justify-center overflow-hidden bg-[var(--color-bg-dark)]">
         {/* Animated block pattern background */}
         <div className="absolute inset-0 opacity-10">
           {/* Insert build image */}
@@ -93,8 +93,8 @@ export default function HomePage() {
             ))}
           </h1>
 
-          <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            {siteConfig.tagline}. {siteConfig.description}
+          <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            {siteConfig.description}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
@@ -112,17 +112,17 @@ export default function HomePage() {
         </div>
 
         {/* Bottom gradient fade to cream */}
-        <div className="absolute bottom-0 left-0 right-0 h-15 bg-gradient-to-t from-[var(--color-bg-primary)] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[var(--color-bg-primary)] to-transparent" />
       </section>
 
       {/* ── Highlights Section ──────────────────────────── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-14 scroll-reveal">
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--color-text-primary)] mb-4">
-            Why the Klaatzoo Network?
+            What’s our mission?
           </h2>
           <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            We&apos;re not just another SMP, we&apos;re a community-first server built on performance, creativity, and respect.
+            Our goal is to weave together a tight-knit community of highly skilled builders with the shared idea of making an interconnected world through storytelling and building.
           </p>
         </div>
 
