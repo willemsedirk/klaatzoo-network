@@ -97,7 +97,7 @@ export default function HomePage() {
             {siteConfig.description}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="flex flex-col sm:flex-row mt-10 items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <Link href="/apply">
               <Button size="lg" className="text-base px-10 animate-pulse-glow">
                 Apply Now
